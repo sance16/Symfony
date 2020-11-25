@@ -1,0 +1,30 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Pagina principal
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+
+<div class="container">
+    <div class="row mr-0 text-center">
+      <div class="col-md-4 mb-4">
+        <img class="imagen-Perfil card-image-top" src="https://www.asindown.org/wp-content/uploads/2016/09/alejandro_sanz-370x370.jpg" alt="">
+        <a href="{{path('registerAulas')}}"><button type="button">Nueva Aula</button></a>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <img class="imagen-Perfil card-image-top" src="https://www.asindown.org/wp-content/uploads/2016/09/alejandro_sanz-370x370.jpg" alt="">
+        <a href="{{path('registerAsignaturas')}}"><button type="button">Nueva Asignatura</button></a>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <img class="imagen-Perfil card-image-top" src="https://www.asindown.org/wp-content/uploads/2016/09/alejandro_sanz-370x370.jpg" alt="">
+        <a href="{{path('registerProgramas')}}"><button type="button">Nuevo Programa</button></a>
+      </div>
+
+    </div><!-- .row.mr-0 -->
+</div>
+
+{% endblock %}

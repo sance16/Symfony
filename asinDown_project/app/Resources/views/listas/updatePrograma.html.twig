@@ -1,0 +1,17 @@
+{% extends('base.html.twig')%}
+
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block body %}
+<br>
+<div class="box">
+<h3>Actualizar Programa</h3>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+</div>
+<br>
+<a href="{{path('listadoPrograma')}}" id="link">Programas</a>
+{% endblock %}

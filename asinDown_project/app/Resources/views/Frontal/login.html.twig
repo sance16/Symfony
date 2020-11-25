@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>
+      Login
+    </title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/modern-business.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+  </head>
+  <body>
+
+    {% if error %}
+      <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    
+    <header>
+      <!-- Navigation -->
+      <nav class="navbar fixed-top navbar-expand-lg fixed-top"> <div class="container">
+        <a class="navbar-brand" href=""><img alt="Logo de AsinDown" class="logo" src="https://www.asindown.org/wp-content/uploads/2018/06/nuevo_logo_100.png"></a>
+      </nav>
+      <!-- Fin Menu de Navegacion -->
+    </header>
+    <div class="espacio-nav">s</div>
+
+
+  <div class="hero-image">
+  <div class="hero-text">
+
+    <div class="containerLogin">
+    <form action="{{ path('login') }}" method="post"  class="form-signin">
+     <div class="imgcontainer">
+     <h1 class="tituloInicioSesion"> Inicio de Sesión </h1>
+    </div>
+
+      <input type="text" value="{{ last_username }}" class="form-control" id="username" name="_username" placeholder="Usuario" required="" autofocus="" />
+			<input type="password" class="form-control" id="password" name="_password" placeholder="Contraseña" required=""/>
+
+      <button name="submit" value="Login" type="submit">Acceder</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Recuerdame
+      </label>
+      
+      <br>
+   
+      <span class="psw"><a href="restaurarContraseña">Olvidaste la contraseña?</a></span>
+    </div>
+    </form>
+
+  </div>
+</div>
+
+
+
+<!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-6 mr-md-5 text-left">
+            <a href="{{ path('calendario') }}"><img alt="Logo de AsinDown" class="logo titulos-footer" src="https://www.asindown.org/wp-content/uploads/2017/04/logo_60.png"></a>
+            <p>ASINDOWN es una entidad sin ánimo de lucro creada en 1989, cuyo objetivo principal es facilitar y promover cuantos medios sean necesarios para conseguir el desarrollo integral de las personas con Síndrome de Down y favorecer su plena integración familiar, educativa, laboral y social como miembros activos de la sociedad.</p>
+          </div>
+          <div class="col-md-4">
+            <h3 class="titulos-footer">Síguenos</h3>
+            <hr>
+            <a class="redes-footer" href="https://es-es.facebook.com/asindownvalencia/"><i class="fab fa-facebook-f"></i></a>
+            <a class="redes-footer" href="https://www.instagram.com/asindown/?hl=es"><i class="fab fa-instagram"></i></a>
+            <a class="redes-footer" href="https://www.youtube.com/channel/UCjIX8yS0UkTONCiTNuS29aQ"><i class="fab fa-youtube"></i></a>
+            <a class="redes-footer" href="https://twitter.com/asindown?lang=es"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Links
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+
+<div class="container">
+    <div class="row mr-0 text-center">
+      <div class="col-md-6 mb-4">
+        <img class="imagen-Perfil card-image-top" src="https://www.cev.com/wp-content/uploads/2017/09/alumos-slider-MOVIL.jpg" alt="">
+        <a href="{{path('listadoProfesor')}}"><button type="button">Lista Usuarios</button></a>
+      </div>
+
+      <div class="col-md-6 mb-4">
+        <img class="imagen-Perfil card-image-top" src="https://www.cev.com/wp-content/uploads/2017/09/alumos-slider-MOVIL.jpg" alt="">
+        <a href="{{path('listadoPrograma')}}"><button type="button">Lista Programas</button></a>
+      </div>
+
+    </div><!-- .row.mr-0 -->
+</div>
+
+{% endblock %}

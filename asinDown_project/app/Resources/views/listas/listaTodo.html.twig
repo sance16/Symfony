@@ -1,0 +1,219 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Lista Todo
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+
+
+<h1>Profesor</h1>
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1">Profesores</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        <tr class="title">
+            <th>Nombre de Usuario</th>
+            <th>Contraseña</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Telefono</th>
+            <th>Dirección</th>
+            <th>Correo</th>
+        </tr>
+          {% for pro in profesor_todo %}
+
+          <tr class="cont">
+              <td>{{ pro.username }}</td>
+              <td>{{ pro.password }}</td>
+              <td>{{ pro.nombre }}</td>
+              <td>{{ pro.apellidos }}</td>
+              <td>{{ pro.telefono }}</td>
+              <td>{{ pro.direccion }}</td>
+              <td>{{ pro.correo}}</td>
+              <td><a href="{{path('updateProf',{'username':pro.username})}}" id="link">Actualizar</a>
+              <td><a href="{{path('deleteProf',{'username':pro.username})}}" id="link">Borrar</a></td>
+          </tr>
+          {% endfor %}
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse2">Voluntarios</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        <tr class="title">
+            <th>Nombre de Usuario</th>
+            <th>Contraseña</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Disponibilidad</th>
+            <th>Telefono</th>
+            <th>Dirección</th>
+            <th>Correo</th>
+        </tr>
+          {% for vol in voluntario_todo %}
+
+          <tr class="cont">
+              <td>{{ vol.username }}</td>
+              <td>{{ vol.password }}</td>
+              <td>{{ vol.nombre }}</td>
+              <td>{{ vol.apellidos }}</td>
+              <td>{{ vol.disponibilidad }}</td>
+              <td>{{ vol.telefono }}</td>
+              <td>{{ vol.direccion }}</td>
+              <td>{{ vol.correo}}</td>
+              <td><a href="{{path('updateVol',{'username':vol.username})}}" id="link">Actualizar</a>
+              <td><a href="{{path('deleteVol',{'username':vol.username})}}" id="link">Borrar</a></td>
+          </tr>
+          {% endfor %}
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse3">Alumnos</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        <tr class="title">
+            <th>Nombre de Usuario</th>
+            <th>Contraseña</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Diversidad</th>
+            <th>Telefono</th>
+            <th>Dirección</th>
+            <th>Correo</th>
+        </tr>
+          {% for almn in alumno_todo %}
+
+          <tr class="cont">
+              <td>{{ almn.username }}</td>
+              <td>{{ almn.password }}</td>
+              <td>{{ almn.nombre }}</td>
+              <td>{{ almn.apellidos }}</td>
+              <td>{{ almn.diversidad }}</td>
+              <td>{{ almn.telefono }}</td>
+              <td>{{ almn.direccion }}</td>
+              <td>{{ almn.correo}}</td>
+              <td><a href="{{path('updateAlumn',{'username':almn.username})}}" id="link">Actualizar</a>
+              <td><a href="{{path('deleteAlumn',{'username':almn.username})}}" id="link">Borrar</a></td>
+          </tr>
+          {% endfor %}
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+<h1>Programa</h1>
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse4">Aula</a>
+        </h4>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        <tr class="title">
+            <th>ID</th>
+            <th>Número de Aula</th>
+        </tr>
+          {% for au in aula_todo %}
+
+          <tr class="cont">
+              <td>{{ au.id }}</td>
+              <td>{{ au.numAula }}</td>
+          {% endfor %}
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse5">Programas</a>
+        </h4>
+      </div>
+      <div id="collapse5" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        <tr class="title">
+            <th>ID</th>
+            <th>Nombre</th>
+        </tr>
+          {% for prog in programa_todo %}
+
+          <tr class="cont">
+              <td>{{ prog.id }}</td>
+              <td>{{ prog.nombre }}</td>
+          </tr>
+          {% endfor %}
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse6">Asignatura</a>
+        </h4>
+      </div>
+      <div id="collapse6" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        <tr class="title">
+            <th>ID</th>
+            <th>Aula</th>
+            <th>Nombre</th>
+            <th>Profesor</th>
+            <th>Programa</th>
+            <th>Voluntario</th>
+
+        </tr>
+          {% for asig in asignatura_todo %}
+
+          <tr class="cont">
+            <td>{{ asig.id }}</td>
+            <td>{{ asig.aulas }}</td>
+            <td>{{ asig.nombre }}</td>
+            <td>{{ asig.username_profesor }}</td>
+            <td>{{ asig.nombre_programa }}</td>
+            <td>{{ asig.username_voluntario }}</td>
+          </tr>
+          {% endfor %}
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

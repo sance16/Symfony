@@ -1,0 +1,30 @@
+
+{% extends('base.html.twig')%}
+
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block body %}
+
+<table>
+
+<ul>
+  {% for almn in Alumno %}
+  <tr>
+      <td><li>{{ almn.username }}</li></td>
+      <td><li>{{ almn.password }}</li></td>
+      <td><li>{{ almn.nombre }}</li></td>
+      <td><li>{{ almn.apellidos }}</li></td>
+      <td><li>{{ almn.diversidad }}</li></td>
+      <td><li>{{ almn.telefono }}</li></td>
+      <td><li>{{ almn.direccion }}</li></td>
+      <td><li>{{ almn.correo}}</li></td>
+      <td><li><a href="{{path('update',{'username':almn.username})}}" id="link">Actualizar</a></li></td>
+      <td><li><a href="{{path('delete',{'username':almn.username})}}" id="link">Borrar</a></li></td>
+      </tr>
+    {% endfor %}
+</ul>
+
+</table>
+{% endblock %}

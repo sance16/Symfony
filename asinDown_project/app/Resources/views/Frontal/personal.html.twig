@@ -1,0 +1,29 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Pagina principal
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+
+<div class="container">
+    <div class="row mr-0 text-center">
+      <div class="col-md-4 mb-4">
+        <img class="imagen-Perfil card-image-top" src="https://www.asindown.org/wp-content/uploads/2016/09/alejandro_sanz-370x370.jpg" alt="">
+        <a href="{{path('registerUsuario')}}"><button type="button">Nuevo Alumno</button></a>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <img class="imagen-Perfil card-image-top" src="https://www.asindown.org/wp-content/uploads/2017/04/6.-formacion-par-ael-empleo-370x370.jpg" alt="">
+        <a  href="{{path('registerUsuario')}}"><button type="button">Nuevo Profesor</button></a>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <img class="imagen-Perfil card-image-top" src="https://www.asindown.org/wp-content/uploads/2018/06/DSC5560-370x370.jpg" alt="">
+        <a href="{{path('registerUsuario')}}"><button type="button">Nuevo Voluntario</button></a>
+      </div>
+
+    </div><!-- .row.mr-0 -->
+</div>
+{% endblock %}

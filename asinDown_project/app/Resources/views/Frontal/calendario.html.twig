@@ -1,0 +1,234 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('css/jquery-clockpicker.css') }}" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<link rel="stylesheet" href="css/fullcalendar.min.css">
+
+{% endblock %}
+{% block body %}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="row">
+
+            <div class="col">      </div>
+
+                <div class="col-12">
+                    <div id="CalendarioWeb"></div>
+
+                </div>
+                <div class="col">      </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+      <!-- Modal(Agregar, modificar, borrrar) -->
+      <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tituloEvento"> </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <input type="hidden" id="txtId" name="txtId" />
+              <input type="hidden" id="txtFecha" name="txtFecha" />
+
+              <div class="form-row">
+                    
+                <div class="form-group col-md-6">
+
+                    <label> Titulo: </label>
+                    <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Introduce un titulo"/> <br/>
+
+                </div>
+
+                <div class="form-group col-md-6">
+                        <label> Hora Inicio: </label>
+
+                <div class="input-group clockpicker" data-autoclose="true">
+                         <input type="text" id="txtHora" value="10:30" class="form-control"/>
+
+                </div>
+
+                <label> Hora Fin: </label>
+                <div class="input-group clockpicker" data-autoclose="true">
+                <input type="text" id="txtHoraFin" value="10:30" class="form-control"/>
+                </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                    <label>Fecha Final: </label>  
+                    <input type="text" id="txtFechaFin" name="txtFechaFin" />
+      
+            </div>
+            <div class="form-group">
+
+              <label>Descripcion:</label>  
+              <textarea id="txtDescripcion" rows="3"  class="form-control"> </textarea> <br/>
+
+            </div>
+            <div class="form-group">
+
+                    <label>Color:</label>  
+                    <input type="color" id="txtColor" value="#ff0000"  class="form-control" style="height: 36px;"/> <br/>
+            </div>  
+
+            </div>
+            <div class="modal-footer">
+    
+                <button type="button" id="btnAgregar" class="btn btn-success">Agregar</button>
+                <button type="button" id="btnModificar" class="btn btn-info">Modificar</button>
+                <button type="button" id="btnEliminar" class="btn btn-danger">Borrar</button>
+    
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+{% block javascripts %}
+
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+<script src="{{ asset('js/moment.min.js') }}"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+
+<script src="{{ asset('js/fullcalendar.min.js') }}"></script>
+<script src="{{ asset('js/es.js') }}"></script>
+<script src="{{ asset('js/jquery-clockpicker.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $('#CalendarioWeb').fullCalendar({
+            header:{
+                left: 'today, prev, next',
+                center: 'title',
+                right: 'month, agendaWeek, agendaDay'
+            },
+            customButtons: {
+                miBoton:{
+                    text: 'Profesores',
+                    click: function(){
+                        alert("Accion del boton");
+                    }
+                }
+            },
+            dayClick:function(date, jsEvent, view){
+                $('#btnAgregar').prop("disabled", false);
+                $('#btnModificar').prop("disabled", true);
+                $('#btnEliminar').prop("disabled", true);
+                
+                limpiarFormulario();
+                $("#txtFecha").val(date.format());
+                $("#txtFechaFin").val(date.format());
+                $("#ModalEventos").modal();
+            },
+                events: 'http://localhost/CalendarioWeb/eventos.php',
+            eventClick:function(calEvent, jsEvent, view){
+                // H2
+                $('#btnAgregar').prop("disabled", true);
+                $('#btnModificar').prop("disabled", false);
+                $('#btnEliminar').prop("disabled", false);
+                $('#tituloEvento').html(calEvent.title);
+                
+                //Mostrar la informacion de los inputs
+                $('#txtDescripcion').val(calEvent.descripcion);
+                $('#txtId').val(calEvent.id);
+                $('#txtTitulo').val(calEvent.title);
+                $('#txtColor').val(calEvent.color);
+                FechaHora= calEvent.start._i.split(" ");
+                $('#txtFecha').val(FechaHora[0]);
+                $('#txtHora').val(FechaHora[1]);
+                FechaHoraFin= calEvent.end._i.split(" ");
+                $('#txtFechaFin').val(FechaHoraFin[0]);
+                $('#txtHoraFin').val(FechaHoraFin[1]);
+                $('#ModalEventos').modal();
+              
+            },
+            //Funcion para arrastrar eventos
+            editable: true,
+            eventDrop:function(calEvent){
+                $('#txtId').val(calEvent.id);
+                $('#txtTitulo').val(calEvent.title);
+                $('#txtColor').val(calEvent.color);
+                $('#txtDescripcion').val(calEvent.descripcion);
+                FechaHora = calEvent.start.format().split("T");
+                $('#txtFecha').val(FechaHora[0]);
+                $('#txtHora').val(FechaHora[1]);
+                recolectarDatosGUI();
+                enviarInformacion('modificar', nuevoEvento, true);
+            }
+        });
+    })
+</script>
+<script>
+    var nuevoEvento;
+    $('#btnAgregar').click(function(){
+        recolectarDatosGUI();
+        enviarInformacion('agregar', nuevoEvento);
+    });
+    $('#btnEliminar').click(function(){
+        recolectarDatosGUI();
+        enviarInformacion('eliminar', nuevoEvento);
+    });
+    $('#btnModificar').click(function(){
+        recolectarDatosGUI();
+        console.log(nuevoEvento);
+        enviarInformacion('modificar', nuevoEvento);
+    });
+    function recolectarDatosGUI(){
+        nuevoEvento= {
+            id:$('#txtId').val(),
+            title:$('#txtTitulo').val(),
+            start:$('#txtFecha').val() + " " + $('#txtHora').val(),
+            color:$('#txtColor').val(),
+            descripcion:$('#txtDescripcion').val(),
+            textColor:"FFFFFF",
+            end:$('#txtFechaFin').val() + " " + $('#txtHoraFin').val()
+        };
+    }
+    function enviarInformacion(accion, objEvento, modal){
+        $.ajax({
+            type: 'POST',
+            url: 'eventos.php?accion='+accion,
+            data: objEvento,
+            success:function(msg){
+                if(msg){
+                    console.log(msg);
+                    $('#CalendarioWeb').fullCalendar('refetchEvents');
+                    if(!modal){
+                        $("#ModalEventos").modal('toggle');
+                    }
+                }
+            },
+            error: function(msg){
+                alert('Se ha producido un error');
+                console.log(msg);
+            }
+        });
+    }
+    $('.clockpicker').clockpicker();
+    function limpiarFormulario(){
+        $('#tituloEvento').html(' ');
+        $('#txtId').val(' ');
+        $('#txtTitulo').val(' ');
+        $('#txtDescripcion').val(' ');
+    }
+</script>
+
+{% endblock %}

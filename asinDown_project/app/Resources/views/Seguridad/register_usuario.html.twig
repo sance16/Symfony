@@ -1,0 +1,30 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Pagina principal
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+  <!-- Page Heading/Breadcrumbs -->
+
+  <div class="containerPerfil">
+    <h1 class="tituloPerfil mt-4 mb-3">Registros</h1>
+
+
+
+    <!-- Marketing Icons Section -->
+
+    <div class="row mr-0">
+      <div class="col-md-4 mb-4">
+        <img class="imagen-Perfil card-image-top" src="https://www.asindown.org/wp-content/uploads/2018/06/IMG_0642.jpg" alt="">
+      </div>
+
+    <div class="col-md-8 pl-5 mb-4">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+    </div>
+    </div><!-- .row.mr-0 -->
+  </div><!-- .containerPerfil -->
+{% endblock %}

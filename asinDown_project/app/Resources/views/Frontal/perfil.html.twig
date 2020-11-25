@@ -1,0 +1,53 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Pagina principal
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+
+  <!-- Page Heading/Breadcrumbs -->
+
+  <div class="containerPerfil">
+    <h1 class="tituloPerfil mt-4 mb-3">Perfil</h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="calendario">Calendario</a>
+      </li>
+      <li class="breadcrumb-item active">Perfil</li>
+    </ol>
+
+    <!-- Marketing Icons Section -->
+
+    <div class="row mr-0">
+      <div class="col-md-4 mb-4">
+        <img class="imagen-Perfil card-image-top" src="https://www.asindown.org/wp-content/uploads/2018/06/IMG_0642.jpg" alt="">
+      </div>
+
+      <div class="col-md-4 mb-4 d-inline-block">
+        <h3 class="mb-4"><b>Nombre del Usuario</b></h3>
+        {{ form_start(form) }}
+        <label for="uname"><b>Nombre</b></label>
+        <i class="fas fa-user"></i>{{ form_widget(form.Nombre) }}
+        <label for="uname"><b>Apellidos</b></label>
+        <i class="fas fa-user"></i>{{ form_widget(form.Apellidos) }}
+        <label for="uname"><b>Correo</b></label>
+        <i class="fas fa-user"></i>{{ form_widget(form.Correo) }}
+        </div>
+        <div class="col-md-4 mb-4 d-inline-block">
+          <label for="uname"><b>Telefono</b></label>
+          <i class="fas fa-phone"></i>{{ form_widget(form.Telefono) }}
+          <label for="uname"><b>Dirección</b></label>
+          <i class="fas fa-map-marked-alt"></i>{{ form_widget(form.Direccion) }}
+          <label for="uname"><b>Programa</b></label>
+          <i class="fas fa-graduation-cap"></i>{{ form_widget(form.Programa) }}
+        </div>
+        {{ form_end(form) }}
+      </div>
+
+    </div><!-- .row.mr-0 -->
+  </div><!-- .containerPerfil -->
+
+{% endblock %}

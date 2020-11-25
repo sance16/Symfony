@@ -1,0 +1,54 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Pagina principal
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+  <!-- Page Heading/Breadcrumbs -->
+
+  <div class="containerPerfil">
+    <h1 class="tituloPerfil mt-4 mb-3">Nuevo Programa</h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="evento">Evento</a>
+      </li>
+      <li class="breadcrumb-item active">Programas</li>
+    </ol>
+
+    <!-- Marketing Icons Section -->
+    
+    <div class="row mr-0">
+      <div class="col-md-4 mb-4">
+        <img class="imagen-Perfil card-image-top" src="https://www.asindown.org/wp-content/uploads/2018/06/IMG_0642.jpg" alt="">
+      </div>
+    <div class="col-md-8">
+    <form>
+        <h3 class="mb-4"><b>Nombre del Programa</b></h3>
+        <div class="col-md-5 mb-4 d-inline-block">
+          <label for="uname"><b>Nombre</b></label>
+          <i class="fas fa-user"></i><input type="text" name="uname" required>
+          <label for="uname"><b>Duración</b></label>
+          <i class="far fa-user"></i><input type="text" name="uname" required>
+          <label for="uname"><b>Dirección</b></label>
+          <i class="fas fa-envelope"></i><input type="text" name="uname" required>
+        </div>
+        <div class="col-md-5 mb-4 d-inline-block">
+          <label for="uname"><b>Horario</b></label>
+          <i class="fas fa-phone"></i><input type="text" name="uname" required>
+          <label for="uname"><b>Dirección</b></label>
+          <i class="fas fa-map-marked-alt"></i><input type="text" name="uname" required>
+          <label for="uname"><b>Programa</b></label>
+          <i class="fas fa-graduation-cap"></i><input type="text" name="uname" required>
+        </div>
+        <br>
+            <button type="button" class="btn btn-primary">Añadir</button>
+            <input type="reset" class="btn btn-danger" value="Resetear"></input>
+        </form>
+      </div> 
+    
+    </div><!-- .row.mr-0 -->
+  </div><!-- .containerPerfil -->
+{% endblock %} 

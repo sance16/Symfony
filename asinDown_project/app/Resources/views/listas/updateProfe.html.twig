@@ -1,0 +1,16 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Actualizar Profesor
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+<br>
+<div class="box">
+  <h3>Actualizar Profesor</h3>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+</div>
+{% endblock %}

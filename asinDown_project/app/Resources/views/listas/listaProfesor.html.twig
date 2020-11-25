@@ -1,0 +1,50 @@
+{# Plantillla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+{# TITULO #}
+{% block title %}
+Lista Usuarios
+{% endblock %}
+{# CONTENIDO #}
+{% block body %}
+
+      <div class="dropdown text-right mr-4">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">USUARIOS
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="{{ path('listadoProfesor') }}">Profesores</a></li>
+          <li><a href="{{ path('listadoVoluntario') }}">Voluntarios</a></li>
+          <li><a href="{{ path('listadoAlumno') }}">Alumnos</a></li>
+        </ul>
+      </div>
+      <table>
+      <h1>Usuarios</h1>
+        <tr class="title">
+            <th>Nombre de Usuario</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Telefono</th>
+            <th>Dirección</th>
+            <th>Programa</th>
+            <th>Diversidad</th>
+            <th>disponibilidad</th>
+            <th>Correo</th>
+            <th>Tipo</th>
+        </tr>
+          {% for usu in usuario %}
+
+          <tr class="cont">
+              <td>{{ usu.username }}</td>
+              <td>{{ usu.nombre }}</td>
+              <td>{{ usu.apellidos }}</td>
+              <td>{{ usu.telefono }}</td>
+              <td>{{ usu.direccion }}</td>
+              <td>{{ usu.programas|join(',') }}</td>
+              <td>{{ usu.diversidad}}</td>
+              <td>{{ usu.disponibilidad}}</td>
+              <td>{{ usu.correo}}</td>
+              <td>{{ usu.tipoUsuario}}</td>
+
+          </tr>
+          {% endfor %}
+        </table>
+{% endblock %}
